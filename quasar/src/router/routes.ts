@@ -4,7 +4,26 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+    children: [
+      { path: '', component: () => import('pages/IndexPage.vue') },
+      { path: '/signup', component: () => import('pages/SignupPage.vue') },
+    ],
+  },
+  {
+    path: '/portal',
+    component: () => import('layouts/PortalLayout.vue'),
+    children: [
+      { path: '/', component: () => import('pages/portal/DashboardPage.vue') },
+      {
+        path: 'events',
+        component: () => import('pages/portal/EventsPage.vue'),
+      },
+      {
+        path: 'settings',
+        component: () => import('pages/portal/SettingsPage.vue'),
+      },
+      { path: 'wifi', component: () => import('pages/portal/WifiPage.vue') },
+    ],
   },
 
   // Always leave this as last one,

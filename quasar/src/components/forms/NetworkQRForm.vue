@@ -1,28 +1,42 @@
 <template>
-  <div>
-    <h6>Provide WiFi information</h6>
-    <q-input
-      label="Wifi name (SSID)"
-      v-model="wifi.ssid"
-      :rules="[(val) => val.length > 0 || 'Required Field']"
-    />
-    <div class="row">
-      <q-input
-        label="Wifi password"
-        v-model="wifi.password"
-        :type="canShow ? 'text' : 'password'"
-        :rules="[(val) => val.length > 0 || 'Required Field']"
-      />
-      <q-icon
-        :name="canShow ? 'visibility' : 'visibility_off'"
-        color="black"
-        size="4rem"
-        @click="canShow = !canShow"
-      />
-    </div>
-    <q-btn label="Submit" @click="generaeteQR" />
-    <q-img :src="image" />
-  </div>
+  <q-card class="row" style="width: 500px">
+    <q-card-section class="col">
+      <q-card-section class="row">
+        <div class="text-h6">Create WiFi QR</div>
+      </q-card-section>
+      <q-separator />
+      <q-card-section class="row">
+        <q-input
+          label="Wifi name (SSID)"
+          filled
+          v-model="wifi.ssid"
+          :rules="[(val) => val.length > 0 || 'Required Field']"
+        />
+      </q-card-section>
+      <q-card-section class="row">
+        <q-input
+          v-model="wifi.password"
+          filled
+          label="Password"
+          :type="canShow ? 'text' : 'password'"
+        >
+          <template v-slot:append>
+            <q-icon
+              :name="canShow ? 'visibility' : 'visibility_off'"
+              class="cursor-pointer"
+              @click="canShow = !canShow"
+            />
+          </template>
+        </q-input>
+      </q-card-section>
+      <q-card-section>
+        <q-btn label="Submit" @click="generaeteQR" />
+      </q-card-section>
+    </q-card-section>
+    <q-card-section class="col">
+      <q-img :src="image" />
+    </q-card-section>
+  </q-card>
 </template>
 
 <script lang="ts">

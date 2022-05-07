@@ -1,6 +1,8 @@
 <template>
   <div>
     <q-btn @click="createProject"> CREATE OPENSCREEN PROJECT</q-btn>
+    {{ asset.data }}
+    {{ allAssets.data }}
   </div>
 </template>
 
@@ -8,21 +10,30 @@
 import {
   useFirestoreCollection,
   useFirestoreDoc,
+  useHttpsCallable,
 } from '@gcto/firebase-hooks/lib';
+import { CreateAssetByProjectIdRequestBody } from '@openscreen/sdk';
 import { defineComponent } from '@vue/runtime-core';
-
-import firebase from 'firebase';
-import { openScreen } from 'src/lib/openscreen';
 
 export default defineComponent({
   setup() {
     const { data } = useFirestoreCollection('test');
-
+    const asset = useHttpsCallable(
+      'getAsset',
+      () => '0ed51c87-80eb-49e9-af5c-e68ec8014fed'
+    );
+    const allAssets = useHttpsCallable('getAssetsByGroup', () => 'events');
+    // const allEvents = useHttpsCallable('getEvents', () => 'ASD');
+    // const t = useHttpsCallable(
+    //   'getEvents',
+    //   () =>
+    //     ({
+    //       name: 'Event',
+    //       description: 'sample project',
+    //     } as CreateAssetByProjectIdRequestBody)
+    // );
     //
     const createProject = async () => {
-      const osProject = (
-        await firebase.firestore().collection('projects').add({ owner: 'me' })
-      ).id;
       // os.assetGroup
       // openScreen.assets().create({
       //   groupId: 'projects',
@@ -32,13 +43,13 @@ export default defineComponent({
       // });
     };
 
-    const t = useFirestoreDoc('T', () => 'vfdhmJ7Zu5hK4QB9ro0O');
+    // const t = useFirestoreDoc('T', () => 'vfdhmJ7Zu5hK4QB9ro0O');
     // axios.post(`https://kbdgsb6g57.execute-api.us-east-1.amazonaws.com/prod/accounts/{accountId}/projects`,{
 
     // });
 
     // const t = collection.
-    return { data, t, createProject };
+    return { data, asset, allAssets, createProject };
   },
 });
 </script>

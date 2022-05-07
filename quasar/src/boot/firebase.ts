@@ -1,6 +1,7 @@
 // quasar/src/boot
 import { firebaseInit } from '@gcto/firebase-hooks';
 import { boot } from 'quasar/wrappers';
+import firebase from 'firebase';
 
 export default boot(({ app }) => {
   app.use(() => {
@@ -13,5 +14,6 @@ export default boot(({ app }) => {
       appId: '1:49492438485:web:920c4a0152ede67785a15c',
       measurementId: 'G-4V47BM1G0B',
     });
+    firebase.functions().useEmulator('localhost', 5001);
   });
 });

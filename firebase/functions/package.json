@@ -3,10 +3,10 @@
   "scripts": {
     "lint": "eslint --ext .js,.ts .",
     "test": "echo \"No test specified\" && exit 0",
-    "start": "npm run shell",
+    "start": "npm run serve",
     "build": "tsc",
     "build:watch": "tsc -w",
-    "serve": "npm run build | firebase emulators:start --only functions",
+    "serve": "npm run build:watch | firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
@@ -16,6 +16,7 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "@openscreen/sdk": "^0.7.1",
     "@types/cors": "^2.8.12",
     "@types/sizzle": "^2.3.3",
     "@types/yauzl": "^2.9.2",

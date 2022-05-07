@@ -12,6 +12,7 @@
 
 <script lang="ts">
 import {
+  httpsCallable,
   useFirestoreCollection,
   useFirestoreDoc,
   useHttpsCallable,
@@ -24,14 +25,12 @@ import {
 } from '@openscreen/sdk';
 import { computed } from '@vue/composition-api';
 import { defineComponent } from '@vue/runtime-core';
+import firebase from 'firebase';
 
 export default defineComponent({
   setup() {
     const { data } = useFirestoreCollection('test');
-    // const asset = useHttpsCallable(
-    //   'getAsset',
-    //   () => '0ed51c87-80eb-49e9-af5c-e68ec8014fed'
-    // );
+
     const allAssets = useHttpsCallable<any, ResponseAsset[]>(
       'getAssets',
       () => ({})
@@ -48,8 +47,19 @@ export default defineComponent({
     //     } as CreateAssetByProjectIdRequestBody)
     // );
     //
+    // useHttpsCallable(
+    //   'deleteAsset',
+    //   () => '7c399fdf-35ed-4cac-b3c9-ee8519ba2799'
+    // );
     const createProject = async () => {
-      useHttpsCallable('createEvent', () => ({}));
+      const fs = firebase.firestore();
+      fs.collection('assets').add({
+        name: 'test event',
+        qrCodes: ['http://localhost:8080/#/'],
+      });
+      // useHttpsCallable('createEvent', () => ({
+      //   name: 'Hello',
+      // }));
       // os.assetGroup
       // openScreen.assets().create({
       //   groupId: 'projects',

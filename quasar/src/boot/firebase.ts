@@ -14,6 +14,6 @@ export default boot(({ app }) => {
       appId: '1:49492438485:web:920c4a0152ede67785a15c',
       measurementId: 'G-4V47BM1G0B',
     });
-    firebase.functions().useEmulator('localhost', 5001);
+    process.env.DEV && firebase.functions().useEmulator('localhost', 5001);
   });
 });

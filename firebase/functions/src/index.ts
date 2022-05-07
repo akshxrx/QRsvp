@@ -9,6 +9,7 @@ import {
 import * as dotenv from "dotenv";
 dotenv.config();
 
+// functions.firebaseConfig()
 const projectId = "1a877553-f7e3-4bb9-a5bb-0dd0cfa7e28e";
 const openScreen = new Openscreen().config({
   key: process.env.OS_API_KEY,
@@ -23,31 +24,46 @@ require("cors")({ origin: true });
 
 admin.initializeApp();
 
-// export const createAssetAuto = functions.firestore
-//   .document("assets/{assetId}")
-//   .onCreate(async (snap, context) => {
-//     const data = snap.data();
-//     const openscreenProject = await openScreenProject.assets().create({
-//       customAttributes: data,
-//     });
+export const createAssetAuto = functions.firestore
+  .document("assets/{assetId}")
+  .onCreate(async (snap, context) => {
+    const data = snap.data();
+    const openscreenAsset = await openScreenProject.assets().create({
+      customAttributes: data,
+      qrCodes: data.qrCodes?.map((qr: string) => ({
+        intent: clientUrl,
+        intentType: QrCodeIntentType.DYNAMIC_REDIRECT,
+      })),
+      name: (data.name as string) || "eventName",
+    });
 
-//     snap.ref.set({ assetId: openscreenProject.projectId }, { merge: true });
-//   });
+    snap.ref.set(
+      {
+        assetId: openscreenAsset.projectId || "no-project",
+        // qrCodes: openscreenAsset.asset?.qrCodes?.map((qr) => qr || "no-qr"),
+        eventId: data.eventId || "no-event",
+      },
+      { merge: true }
+    );
+  });
 
-// export const updateAssetAuto = functions.firestore
-//   .document("assets/{assetId}")
-//   .onUpdate(async (change, context) => {
-//     const data = change.after.data();
-//     openScreen.asset(data.assetId).update({
-//       customAttributes: data,
-//     });
-//   });
-// export const deleteAssetAuto = functions.firestore
-//   .document("assets/{assetId}")
-//   .onDelete(async (snap, context) => {
-//     const data = snap.data();
-//     await openScreen.asset(data.assetId).delete();
-//   });
+export const test = functions.https.onCall((c, t) => {
+  return;
+});
+export const updateAssetAuto = functions.firestore
+  .document("assets/{assetId}")
+  .onUpdate(async (change, context) => {
+    const data = change.after.data();
+    openScreen.asset(data.assetId).update({
+      customAttributes: data || "no-data",
+    });
+  });
+export const deleteAssetAuto = functions.firestore
+  .document("assets/{assetId}")
+  .onDelete(async (snap, context) => {
+    const data = snap.data();
+    await openScreen.asset(data.assetId).delete();
+  });
 
 export const createUser = functions.auth.user().onCreate(async (user) => {
   await admin
@@ -64,7 +80,7 @@ export const createUser = functions.auth.user().onCreate(async (user) => {
 export const createEvent = functions.https.onCall(
   async (data: NestedKeyValueObject, context) => {
     const fs = admin.firestore();
-    const openscreenProject = await openScreenProject.assets().create({
+    const openscreenObject = await openScreenProject.assets().create({
       customAttributes: data,
       name: (data.name as string) || "eventName",
       groupId: "events",
@@ -75,8 +91,9 @@ export const createEvent = functions.https.onCall(
         },
       ],
     });
+
     fs.collection("events")
-      .doc(openscreenProject.projectId || "")
+      .doc(openscreenObject.projectId || "")
       .set({
         uid: context.auth?.uid,
       });

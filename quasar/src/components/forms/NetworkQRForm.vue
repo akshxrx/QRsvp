@@ -32,7 +32,7 @@ export default defineComponent({
   setup() {
     const wifi = reactive({ ssid: '', password: '' });
     const canShow = ref(false);
-    const image = ref(null);
+    const image = ref<string>();
     // Note*: DOES NOT USE OPENSCREEN. Partly due to its lack of ability
     // to encode strings only. Eventually add to firestore as imgUrl
     async function generaeteQR() {

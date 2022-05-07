@@ -1,6 +1,7 @@
 // quasar/src/boot
 import { firebaseInit } from '@gcto/firebase-hooks';
 import { boot } from 'quasar/wrappers';
+
 export default boot(({ app }) => {
   app.use(() => {
     firebaseInit({

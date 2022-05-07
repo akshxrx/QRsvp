@@ -6,10 +6,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import NetworkQRForm from 'components/forms/NetworkQRForm.vue';
+// import NetworkQRForm from 'components/forms/NetworkQRForm.vue';
 export default defineComponent({
   name: 'IndexPage',
-  components: { NetworkQRForm },
+  // components: { NetworkQRForm },
   setup() {
     return {};
   },

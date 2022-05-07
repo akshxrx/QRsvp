@@ -24,6 +24,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { useRouter } from 'vue-router';
 import GButton from '../assets/GButton.vue';
 import { useGoogleAuth } from '../lib/firebaseauth';
 export default defineComponent({
@@ -31,12 +32,16 @@ export default defineComponent({
     GButton,
   },
   setup() {
+    const $route = useRouter();
+
     const account_email = ref<string>('');
     const account_password = ref<string>('');
-    function googleAuth() {
-      const user = useGoogleAuth();
+    async function googleAuth() {
+      const user = await useGoogleAuth();
       console.log(user);
-      return 0;
+      if (user) {
+        $route.push('/portal');
+      }
     }
     // TODO @sam: low priority
     function createEmailUser() {

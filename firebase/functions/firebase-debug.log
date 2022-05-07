@@ -1,0 +1,131 @@
+[debug] [2022-05-07T18:33:27.792Z] ----------------------------------------------------------------------
+[debug] [2022-05-07T18:33:27.794Z] Command:       /Users/alain/.nvm/versions/node/v14.19.1/bin/node /Users/alain/.nvm/versions/node/v14.19.1/bin/firebase emulators:start --only functions
+[debug] [2022-05-07T18:33:27.794Z] CLI Version:   10.4.0
+[debug] [2022-05-07T18:33:27.794Z] Platform:      darwin
+[debug] [2022-05-07T18:33:27.794Z] Node Version:  v14.19.1
+[debug] [2022-05-07T18:33:27.797Z] Time:          Sat May 07 2022 14:33:27 GMT-0400 (Eastern Daylight Time)
+[debug] [2022-05-07T18:33:27.797Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-07T18:33:27.858Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-05-07T18:33:27.859Z] > authorizing via signed-in user (onealainn@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2022-05-07T18:33:27.905Z] [hub] writing locator at /var/folders/xm/9cxkb7y92g736xrjp3t60nw40000gn/T/hub-qrsvp-e3d86.json
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub, storage\u001b[22m"}}
+[info] ✔  functions: Using node@14 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@14 from host."}}
+[debug] [2022-05-07T18:33:27.962Z] defaultcredentials: writing to file /Users/alain/.config/firebase/onealainn_gmail_com_application_default_credentials.json
+[debug] [2022-05-07T18:33:27.968Z] Setting GAC to /Users/alain/.config/firebase/onealainn_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/alain/.config/firebase/onealainn_gmail_com_application_default_credentials.json"}}
+[debug] [2022-05-07T18:33:27.971Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/qrsvp-e3d86/adminSdkConfig [none]
+[debug] [2022-05-07T18:33:28.343Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/qrsvp-e3d86/adminSdkConfig 200
+[debug] [2022-05-07T18:33:28.343Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/qrsvp-e3d86/adminSdkConfig {"projectId":"qrsvp-e3d86","storageBucket":"qrsvp-e3d86.appspot.com","locationId":"us-central"}
+[debug] [2022-05-07T18:33:28.371Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-05-07T18:33:28.372Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2022-05-07T18:33:28.372Z] Starting Emulator UI with command {"binary":"node","args":["/Users/alain/.cache/firebase/emulators/ui-v1.6.5/server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/alain/.cache/firebase/emulators/ui-v1.6.5/server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2022-05-07T18:33:28.474Z] Web / API server started at localhost:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at localhost:4000\n"}}
+[info] i  functions: Watching "/Users/alain/Documents/Projects/ruhacksmain/firebase/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/alain/Documents/Projects/ruhacksmain/firebase/functions\" for Cloud Functions..."}}
+[debug] [2022-05-07T18:33:28.649Z] Validating nodejs source
+[debug] [2022-05-07T18:33:31.266Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "test": "echo \"No test specified\" && exit 0",
+    "start": "npm run shell",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "serve": "npm run build | firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/sizzle": "^2.3.3",
+    "@types/yauzl": "^2.9.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "firebase-admin": "^9.2.0",
+    "firebase-functions": "^3.16.0",
+    "node-forge": "^1.3.0",
+    "stripe": "^8.191.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.9.1",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.0",
+    "firebase-functions-test": "^0.3.3",
+    "typescript": "^3.8.0"
+  }
+}
+[debug] [2022-05-07T18:33:31.267Z] Building nodejs source
+[debug] [2022-05-07T18:33:31.267Z] Analyzing nodejs backend spec
+[debug] [2022-05-07T18:33:31.435Z] addAuthTrigger {"eventTrigger":{"eventType":"providers/firebase.auth/eventTypes/user.create","resource":"projects/qrsvp-e3d86"}}
+[info] ✔  functions[us-central1-createUser]: auth function initialized. {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mauth\u001b[22m function initialized."}}
+[info] ✔  functions[us-central1-validateUrl]: http function initialized (http://localhost:5001/qrsvp-e3d86/us-central1/validateUrl). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/qrsvp-e3d86/us-central1/validateUrl)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://localhost:4000                │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ localhost:5001 │ http://localhost:4000/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2022-05-07T18:33:33.930Z] File /Users/alain/Documents/Projects/ruhacksmain/firebase/functions/lib/index.js.map changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/alain/Documents/Projects/ruhacksmain/firebase/functions/lib/index.js.map changed, reloading triggers"}}
+[debug] [2022-05-07T18:33:33.931Z] File /Users/alain/Documents/Projects/ruhacksmain/firebase/functions/lib/index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/alain/Documents/Projects/ruhacksmain/firebase/functions/lib/index.js changed, reloading triggers"}}
+[debug] [2022-05-07T18:33:34.934Z] Validating nodejs source
+[debug] [2022-05-07T18:33:36.486Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "test": "echo \"No test specified\" && exit 0",
+    "start": "npm run shell",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "serve": "npm run build | firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/sizzle": "^2.3.3",
+    "@types/yauzl": "^2.9.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "firebase-admin": "^9.2.0",
+    "firebase-functions": "^3.16.0",
+    "node-forge": "^1.3.0",
+    "stripe": "^8.191.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.9.1",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.0",
+    "firebase-functions-test": "^0.3.3",
+    "typescript": "^3.8.0"
+  }
+}
+[debug] [2022-05-07T18:33:36.486Z] Building nodejs source
+[debug] [2022-05-07T18:33:36.486Z] Analyzing nodejs backend spec

@@ -11,11 +11,15 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@gcto/firebase-hooks": "0.0.7",
+    "@gcto/swrv-hooks": "0.0.4",
     "@openscreen/sdk": "^0.7.1",
     "@quasar/extras": "^1.0.0",
+    "@vue/composition-api": "^1.6.1",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dotenv": "^16.0.0",
+    "firebase": "^8.7.0",
     "qrcode": "^1.5.0",
     "quasar": "^2.6.0",
     "vue": "^3.0.0",

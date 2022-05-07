@@ -1,6 +1,6 @@
 import { CreateAssetByProjectIdRequestBody, Openscreen } from '@openscreen/sdk';
-
-require('dotenv').config();
+import * as dotenv from 'dotenv';
+dotenv.config();
 const projectId = '1a877553-f7e3-4bb9-a5bb-0dd0cfa7e28e';
 export const openScreen = new Openscreen()
   .config({

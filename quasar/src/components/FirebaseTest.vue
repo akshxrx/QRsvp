@@ -24,12 +24,12 @@ export default defineComponent({
         await firebase.firestore().collection('projects').add({ owner: 'me' })
       ).id;
       // os.assetGroup
-      openScreen.assets().create({
-        groupId: 'projects',
-        customAttributes: {},
-        description: 'sample project',
-        name: osProject,
-      });
+      // openScreen.assets().create({
+      //   groupId: 'projects',
+      //   customAttributes: {},
+      //   description: 'sample project',
+      //   name: osProject,
+      // });
     };
 
     const t = useFirestoreDoc('T', () => 'vfdhmJ7Zu5hK4QB9ro0O');

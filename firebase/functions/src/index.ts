@@ -1,6 +1,11 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
-import { CreateAssetByProjectIdRequestBody, Openscreen } from "@openscreen/sdk";
+import {
+  CreateAssetByProjectIdRequestBody,
+  NestedKeyValueObject,
+  Openscreen,
+  QrCodeIntentType,
+} from "@openscreen/sdk";
 import * as dotenv from "dotenv";
 dotenv.config();
 
@@ -10,36 +15,39 @@ const openScreen = new Openscreen().config({
   secret: process.env.OS_API_SECRET,
 });
 const openScreenProject = openScreen.project(projectId);
+const clientUrl = process.env.FUNCTIONS_EMULATOR
+  ? "http://localhost:8080/#/"
+  : "main";
 
 require("cors")({ origin: true });
 
 admin.initializeApp();
 
-export const createAssetAuto = functions.firestore
-  .document("assets/{assetId}")
-  .onCreate(async (snap, context) => {
-    const data = snap.data();
-    const openscreenProject = await openScreenProject.assets().create({
-      customAttributes: data,
-    });
+// export const createAssetAuto = functions.firestore
+//   .document("assets/{assetId}")
+//   .onCreate(async (snap, context) => {
+//     const data = snap.data();
+//     const openscreenProject = await openScreenProject.assets().create({
+//       customAttributes: data,
+//     });
 
-    snap.ref.set({ assetId: openscreenProject.projectId }, { merge: true });
-  });
+//     snap.ref.set({ assetId: openscreenProject.projectId }, { merge: true });
+//   });
 
-export const updateAssetAuto = functions.firestore
-  .document("assets/{assetId}")
-  .onUpdate(async (change, context) => {
-    const data = change.after.data();
-    openScreen.asset(data.assetId).update({
-      customAttributes: data,
-    });
-  });
-export const deleteAssetAuto = functions.firestore
-  .document("assets/{assetId}")
-  .onDelete(async (snap, context) => {
-    const data = snap.data();
-    await openScreen.asset(data.assetId).delete();
-  });
+// export const updateAssetAuto = functions.firestore
+//   .document("assets/{assetId}")
+//   .onUpdate(async (change, context) => {
+//     const data = change.after.data();
+//     openScreen.asset(data.assetId).update({
+//       customAttributes: data,
+//     });
+//   });
+// export const deleteAssetAuto = functions.firestore
+//   .document("assets/{assetId}")
+//   .onDelete(async (snap, context) => {
+//     const data = snap.data();
+//     await openScreen.asset(data.assetId).delete();
+//   });
 
 export const createUser = functions.auth.user().onCreate(async (user) => {
   await admin
@@ -53,26 +61,32 @@ export const createUser = functions.auth.user().onCreate(async (user) => {
     });
 });
 
-// export const createEvent = functions.https.onCall(
-//   async (data: CreateAssetByProjectIdRequestBody, context) => {
-//     console.log(await openScreen.assets().get(""));
-// openScreen.assetGroups()
-// console.log(process.env.OS_API_KEY);
-// const fs = admin.firestore();
-// const openscreenProject = await openScreen.assets().create({
-//   ...data,
-//   groupId: "events",
-// });
-// fs.collection("events")
-//   .doc(openscreenProject.projectId || "")
-//   .set({});
+export const createEvent = functions.https.onCall(
+  async (data: NestedKeyValueObject, context) => {
+    const fs = admin.firestore();
+    const openscreenProject = await openScreenProject.assets().create({
+      customAttributes: data,
+      name: (data.name as string) || "eventName",
+      groupId: "events",
+      qrCodes: [
+        {
+          intent: clientUrl,
+          intentType: QrCodeIntentType.DYNAMIC_REDIRECT,
+        },
+      ],
+    });
+    fs.collection("events")
+      .doc(openscreenProject.projectId || "")
+      .set({
+        uid: context.auth?.uid,
+      });
 
-//     return;
-//   }
-// );
+    return;
+  }
+);
 
 export const getAssets = functions.https.onCall(async () => {
-  return await openScreenProject.assets().get("");
+  return (await openScreenProject.assets().get("")).assets;
 });
 export const getAssetsByGroup = functions.https.onCall(
   async (data: string, context) => {
@@ -82,5 +96,11 @@ export const getAssetsByGroup = functions.https.onCall(
 export const getAsset = functions.https.onCall(
   async (data: string, context) => {
     return await openScreen.asset(data).get();
+  }
+);
+
+export const deleteAsset = functions.https.onCall(
+  async (data: string, context) => {
+    return await openScreen.asset(data).delete();
   }
 );

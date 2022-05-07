@@ -1,8 +1,12 @@
 <template>
   <div>
     <q-btn @click="createProject"> CREATE OPENSCREEN PROJECT</q-btn>
-    {{ asset.data }}
-    {{ allAssets.data }}
+    <!-- <div>{{ allAssets.data.value }}</div> -->
+    <div v-if="allAssets" class="column">
+      <div v-for="(asset, i) in allAssets.data?.value" :key="i">
+        {{ asset }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -12,17 +16,28 @@ import {
   useFirestoreDoc,
   useHttpsCallable,
 } from '@gcto/firebase-hooks/lib';
-import { CreateAssetByProjectIdRequestBody } from '@openscreen/sdk';
+import {
+  CreateAssetByProjectIdRequestBody,
+  GetAssetGroupResponseBody,
+  GetAssetResponseBody,
+  ResponseAsset,
+} from '@openscreen/sdk';
+import { computed } from '@vue/composition-api';
 import { defineComponent } from '@vue/runtime-core';
 
 export default defineComponent({
   setup() {
     const { data } = useFirestoreCollection('test');
-    const asset = useHttpsCallable(
-      'getAsset',
-      () => '0ed51c87-80eb-49e9-af5c-e68ec8014fed'
+    // const asset = useHttpsCallable(
+    //   'getAsset',
+    //   () => '0ed51c87-80eb-49e9-af5c-e68ec8014fed'
+    // );
+    const allAssets = useHttpsCallable<any, ResponseAsset[]>(
+      'getAssets',
+      () => ({})
     );
-    const allAssets = useHttpsCallable('getAssetsByGroup', () => 'events');
+
+    // const allAssets = useHttpsCallable('getAssetsByGroup', () => 'events');
     // const allEvents = useHttpsCallable('getEvents', () => 'ASD');
     // const t = useHttpsCallable(
     //   'getEvents',
@@ -34,6 +49,7 @@ export default defineComponent({
     // );
     //
     const createProject = async () => {
+      useHttpsCallable('createEvent', () => ({}));
       // os.assetGroup
       // openScreen.assets().create({
       //   groupId: 'projects',
@@ -49,7 +65,7 @@ export default defineComponent({
     // });
 
     // const t = collection.
-    return { data, asset, allAssets, createProject };
+    return { data, allAssets, createProject };
   },
 });
 </script>

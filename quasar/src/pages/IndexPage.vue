@@ -1,21 +1,22 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <!-- <network-q-r-form />
-    <firebase-test /> -->
-    <sub-event-module />
-  </q-page>
+    <div>
+      <landing-page/>
+      <about-section id="about"/>
+      <how-it-works id="how"/>
+    </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import NetworkQRForm from 'components/forms/NetworkQRForm.vue';
-import FirebaseTest from 'src/components/FirebaseTest.vue';
-import SubEventModule from 'src/components/SubEventModule.vue';
+import AboutSection from './AboutSection.vue';
+import LandingPage from './LandingPage.vue';
+import HowItWorks from './HowItWorks.vue';
+
 export default defineComponent({
   name: 'IndexPage',
-  components: { NetworkQRForm, FirebaseTest, SubEventModule },
+  components: { AboutSection, LandingPage, HowItWorks },
   setup() {
-    return {};
+    
+    return {}
   },
-});
-</script>
+})</script>

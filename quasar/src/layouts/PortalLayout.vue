@@ -62,7 +62,7 @@
         clickable
         @click="logout"
         v-ripple
-        class="row justify-center q-py-lg op-80"
+        class="row justify-center q-py-lg op-20"
       >
         <div class="column items-center q-py-sm">
           <q-icon color="primary" name="logout" size="2rem" />
@@ -87,7 +87,7 @@
   background: linear-gradient(
     54deg,
     rgba(23, 77, 98, 1) 0%,
-    rgba(38, 80, 149, 1) 50%,
+    rgba(38, 80, 149, 1) 20%,
     rgba(88, 58, 142, 1) 100%
   );
 }

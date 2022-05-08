@@ -83,11 +83,11 @@
 
 <style lang="scss" scoped>
 .bg {
-  background: rgb(58, 139, 142);
+  background: #7871AA ;
   background: linear-gradient(
     54deg,
-    rgba(58, 139, 142, 1) 0%,
-    rgba(16, 68, 91, 1) 100%
+    #7871AA ,
+    #A4A0C2 100%
   );
 }
 </style>

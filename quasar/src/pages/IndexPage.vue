@@ -1,8 +1,8 @@
 <template>
     <div>
       <landing-page/>
-      <about-section/>
-      <how-it-works/>
+      <about-section id="about"/>
+      <how-it-works id="how"/>
     </div>
 </template>
 
@@ -16,8 +16,7 @@ export default defineComponent({
   name: 'IndexPage',
   components: { AboutSection, LandingPage, HowItWorks },
   setup() {
-    return {};
+    
+    return {}
   },
-});
-</script>
-
+})</script>

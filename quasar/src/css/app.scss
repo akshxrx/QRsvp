@@ -1,2 +1,11 @@
 // app global css in SCSS form
-
+.clickable{
+  cursor: pointer;
+  &:hover{
+    opacity: 0.6;
+    transition: 0.5;
+  }
+}
+.text-primary{
+  color: $primary
+}

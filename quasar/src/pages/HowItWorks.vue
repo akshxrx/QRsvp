@@ -4,32 +4,28 @@
         <div class="row justify-between">
           <div class="col-12 col-md">
               <q-card class="rectangle">
-              <img src="https://cdn.quasar.dev/img/mountains.jpg">
-
+              <q-img src="https://theeducationhub.org.nz/wp-content/uploads/2020/03/discover1.png" :ratio="3.14/3"/>
               <q-card-section>
-                <div class="text-h6">Our Changing Planet</div>
-                <div class="text-subtitle2">by John Doe</div>
+                <div class="text-h6 card-text">1. Create your event anonymously or you can log in to see your saved events!</div>
               </q-card-section>
             </q-card> 
           </div>
           <div class="col-12 col-md">
               <q-card class="rectangle">
-              <img src="https://cdn.quasar.dev/img/mountains.jpg">
+              <q-img src="https://accan.org.au/images/content/Talking%20Telco/Choosing%20a%20SMB%20NBN%20Internet%20Plan/ChoosingASmallBusinessNBNInternetPlan-Graphics-23.png"/>
 
               <q-card-section>
-                <div class="text-h6">Our Changing Planet</div>
-                <div class="text-subtitle2">by John Doe</div>
+                <div class="text-h6 card-text">2. Choose what your invitees can access with their QR code (e.g connecting to wifi, special sub-events)</div>
               </q-card-section>
             </q-card> 
           </div>
 
           <div class="col-12 col-md">
               <q-card class="rectangle">
-              <img src="https://cdn.quasar.dev/img/mountains.jpg">
+              <q-img src="https://mifactura.com.uy/wp-content/uploads/2018/09/la-solucion-mas-completa-mi-factura.png" :ratio="3.14/3"/>
 
               <q-card-section>
-                <div class="text-h6">Our Changing Planet</div>
-                <div class="text-subtitle2">by John Doe</div>
+                <div class="text-h6 card-text">3. Send out your QR code(s) and enjoy partying all with a scan!</div>
               </q-card-section>
             </q-card> 
           </div>
@@ -57,10 +53,13 @@
     border-radius: 6px;
     text-align: center;
     color:white;
+    font-size:5em;
     margin-left:5%;
     margin-right:5%;
     padding-bottom:10%;
     margin-bottom:20%;
+    height: 450px;
+    padding-bottom: 8em;
   }
 
   .row{
@@ -70,6 +69,10 @@
 
   .rectangle:hover{
     box-shadow: 5px 5px 30px #6d688a;
+  }
+
+  .card-text{
+    margin-top: 2em;
   }
   
 

@@ -67,6 +67,7 @@
           </div>
         </div>
       </EventModule>
+
       <!-- RSVP -->
       <EventModule title="RSVP with QR" class="col-3">
         <div class="col-12 column text-dark">

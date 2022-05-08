@@ -51,8 +51,8 @@
           class="row justify-center q-py-lg"
         >
           <div class="column items-center q-py-sm">
-            <q-icon color="primary" :name="route.icon" size="2rem" />
-            <div class="text-primary">{{ route.name }}</div>
+            <q-icon color="secondary" :name="route.icon" size="2rem" />
+            <div class="text-secondary">{{ route.name }}</div>
           </div>
         </q-item>
       </q-list>
@@ -83,11 +83,12 @@
 
 <style lang="scss" scoped>
 .bg {
-  background: #7871AA ;
+  background: rgb(23, 77, 98);
   background: linear-gradient(
     54deg,
-    #7871AA ,
-    #A4A0C2 100%
+    rgba(23, 77, 98, 1) 0%,
+    rgba(38, 80, 149, 1) 50%,
+    rgba(88, 58, 142, 1) 100%
   );
 }
 </style>

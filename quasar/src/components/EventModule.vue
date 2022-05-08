@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-card dark class="bg-card bg-blur" flat>
+    <q-card dark class="bg-card bg-blur border-round" :class="cardClass" flat>
       <q-card-section class="fit column q-col-gutter-none">
         <div class="row-5">
           <h4 v-if="title" class="q-mt-none text-white op-60 q-mb-md">
@@ -28,7 +28,7 @@
 import { defineComponent } from '@vue/runtime-core';
 
 export default defineComponent({
-  props: { title: String },
+  props: { title: String, cardClass: String },
   setup() {
     return {};
   },

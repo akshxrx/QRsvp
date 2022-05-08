@@ -11,7 +11,7 @@
           filled
           v-model="wifi.ssid"
           :rules="[(val) => val.length > 0 || 'Required Field']"
-          style="width: 320px"
+          style="max-width: 320px"
         />
       </q-card-section>
       <q-card-section class="row">
@@ -20,7 +20,7 @@
           filled
           label="Password"
           :type="canShow ? 'text' : 'password'"
-          style="width: 320px"
+          style="max-width: 320px"
         >
           <template v-slot:append>
             <q-icon

@@ -137,8 +137,8 @@ module.exports = configure(function (ctx) {
       // chainWebpackCustomSW (/* chain */) {},
 
       manifest: {
-        name: 'QRSVP',
-        short_name: 'QRSVP',
+        name: 'q-RSVP',
+        short_name: 'q-RSVP',
         description: '',
         display: 'standalone',
         orientation: 'portrait',

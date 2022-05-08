@@ -13,8 +13,8 @@
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
 $primary   : #7871AA;
-$secondary : #26A69A;
-$accent    : #9C27B0;
+$secondary : #ffffff;
+$accent    : #ffffff;
 
 $dark      : #1D1D1D;
 
@@ -22,3 +22,7 @@ $positive  : #21BA45;
 $negative  : #C10015;
 $info      : #31CCEC;
 $warning   : #F2C037;
+
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+$typography-font-family : 'Atkinson Hyperlegible', sans-serif;
+

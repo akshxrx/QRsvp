@@ -1,18 +1,25 @@
 <template>
-  <div class="q-pa-md">
-    <q-layout view="lHh lpr lFf">
-      <q-header elevated>
-        <q-toolbar class=" text-white">
-          <img style="width:9.5em; height:4.5em; padding-top:1em; padding-left:3em; padding-bottom:1em;" src="https://cdn.discordapp.com/attachments/972303957668003880/972581619607150673/logo.png">
+  <div class="">
+    <q-layout view="lHh lpr ">
+      <q-header elevated style="height:6em;">
+        <q-toolbar class="text-white">
+          <img style="width:13em; height:5.6em; padding-top:1.2em; padding-left:5em; padding-bottom:1em;" src="https://cdn.discordapp.com/attachments/908036079528058930/972649293934633050/logo.png">
           <q-space />
-          <q-btn-toggle
+          <q-btn-toggle 
             v-model="model"
             flat stretch
+            toggle-color="white"
             :options="options"
+            style="font-family: var(--font-family-atkinson_hyperlegible);"
           />
+
+
         </q-toolbar>
       </q-header>
+      <router-view/>
     </q-layout>
+
+
   </div>
   
 </template>
@@ -27,7 +34,7 @@ export default {
 
       options: [
         { label: 'about', value: 'about' },
-        { label: 'how does it work?', value: 'functionality' },
+        { label: 'how does it work?', value: 'how it works' },
       ]
     }
   }

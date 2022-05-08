@@ -1,49 +1,41 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+  <div class="">
+    <q-layout view="lHh lpr fFf">
+      <q-header elevated style="height:5em;" class="bg-primary text-white">
+        <q-toolbar style="width: 80%;">
+          <q-toolbar-title>
+            <img class="clickable q-mt-sm gt-sm" @click="navigateElse('/')" style="width:6em; height:auto;" src="https://cdn.discordapp.com/attachments/908036079528058930/972649293934633050/logo.png">
+          </q-toolbar-title>
+          <div/>
+          <div class="q-gutter-md">
+            <q-btn  outline text-color="white" size="lg" label="Create" /> 
+           <q-btn label="login" color="white" text-color="primary" size="lg"/>
+          </div>
 
-        <q-toolbar-title> Quasar App </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
-
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <q-list>
-        <q-item-label header> Essential Links </q-item-label>
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-  </q-layout>
+           
+        </q-toolbar>
+      </q-header>
+      <router-view/>
+    </q-layout>
+    </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-
-export default defineComponent({
-  name: 'MainLayout',
-
-  setup() {
-    const leftDrawerOpen = ref(false);
-
+import { ref} from 'vue'
+import {useRouter} from 'vue-router';
+export default {
+  setup () {
+    const $route = useRouter();
+    function navigateElse(route: string){
+      $route.push(route)
+    }
     return {
-      leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
-    };
-  },
-});
+      model: ref('one'),
+      navigateElse
+    }
+  }
+}
 </script>
+
+
+

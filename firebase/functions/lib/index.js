@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteAsset = exports.createEvent = exports.createUser = exports.deleteAssetAuto = exports.updateAssetAuto = exports.test = exports.createAssetAuto = void 0;
+exports.deleteAsset = exports.createEvent = exports.createUser = exports.deleteAssetAuto = exports.updateAssetAuto = exports.test = exports.createContactByScan = exports.getAssetByScan = exports.createAssetAuto = void 0;
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const sdk_1 = require("@openscreen/sdk");
@@ -29,6 +29,7 @@ exports.createAssetAuto = functions.firestore
         //   intent: clientUrl,
         //   intentType: QrCodeIntentType.DYNAMIC_REDIRECT,
         // })),
+        groupId: data.groupId || "no-group-id",
         name: data.name || "eventName",
     });
     let qrCode;
@@ -38,7 +39,7 @@ exports.createAssetAuto = functions.firestore
             .asset((_b = openscreenAsset === null || openscreenAsset === void 0 ? void 0 : openscreenAsset.asset) === null || _b === void 0 ? void 0 : _b.assetId)
             .qrCodes()
             .create({
-            intent: clientUrl,
+            intent: data.clientIntent,
             intentType: sdk_1.QrCodeIntentType.DYNAMIC_REDIRECT,
             dynamicRedirectType: sdk_1.QrCodeDynamicRedirectType.SCAN_ID_IN_PATH_PARAMETER,
             locatorKeyType: sdk_1.QrCodeLocatorKeyType.SHORT_URL,
@@ -60,6 +61,36 @@ exports.createAssetAuto = functions.firestore
         qrCodeId: (qrObject === null || qrObject === void 0 ? void 0 : qrObject.qrCodeId) || "no qr id",
         imgData: ((_d = qrCode === null || qrCode === void 0 ? void 0 : qrCode.image) === null || _d === void 0 ? void 0 : _d.data) || "no img data",
     }, { merge: true });
+});
+exports.getAssetByScan = functions.https.onCall(async (scanId) => {
+    const response = await openScreen.scan(scanId).get();
+    return response;
+});
+exports.createContactByScan = functions.https.onCall(async (context) => {
+    var _a;
+    const { scanId, name, phone } = context;
+    console.log(scanId, name, phone);
+    // Get Scanned object
+    const scan = await openScreen.scan(scanId).get();
+    const assetId = (_a = scan === null || scan === void 0 ? void 0 : scan.asset) === null || _a === void 0 ? void 0 : _a.assetId;
+    let contactId;
+    // get contact of this project by the phoneNumber
+    const contactsObjPhone = await openScreen
+        .asset(assetId)
+        .contacts()
+        .get({ phone });
+    const responseContact = await openScreen.scan(scanId).contacts().create({
+        firstName: name,
+        cellPhone: phone,
+    });
+    contactId = responseContact.contact.contactId;
+    if (assetId && contactId) {
+        await openScreen.asset(assetId).contact(contactId).link();
+        const sms = await openScreen
+            .scan(scanId)
+            .sms()
+            .send({ smsTemplateName: "firstTemplate", to: phone });
+    }
 });
 exports.test = functions.https.onCall((c, t) => {
     return;

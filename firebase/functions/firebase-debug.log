@@ -1,0 +1,278 @@
+[debug] [2022-05-08T09:49:12.989Z] ----------------------------------------------------------------------
+[debug] [2022-05-08T09:49:12.991Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --only functions
+[debug] [2022-05-08T09:49:12.991Z] CLI Version:   10.8.0
+[debug] [2022-05-08T09:49:12.991Z] Platform:      win32
+[debug] [2022-05-08T09:49:12.991Z] Node Version:  v14.0.0
+[debug] [2022-05-08T09:49:12.992Z] Time:          Sun May 08 2022 05:49:12 GMT-0400 (Eastern Daylight Time)
+[debug] [2022-05-08T09:49:12.992Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-08T09:49:13.061Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-05-08T09:49:13.062Z] > authorizing via signed-in user (oceansam101@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2022-05-08T09:49:15.114Z] [hub] writing locator at C:\Users\samee\AppData\Local\Temp\hub-qrsvp-e3d86.json
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub, storage\u001b[22m"}}
+[info] +  functions: Using node@14 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@14 from host."}}
+[debug] [2022-05-08T09:49:17.170Z] defaultcredentials: writing to file C:\Users\samee\AppData\Roaming\firebase\oceansam101_gmail_com_application_default_credentials.json
+[debug] [2022-05-08T09:49:17.171Z] Setting GAC to C:\Users\samee\AppData\Roaming\firebase\oceansam101_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\samee\\AppData\\Roaming\\firebase\\oceansam101_gmail_com_application_default_credentials.json"}}
+[debug] [2022-05-08T09:49:17.173Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/qrsvp-e3d86/adminSdkConfig [none]
+[debug] [2022-05-08T09:49:17.434Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/qrsvp-e3d86/adminSdkConfig 200
+[debug] [2022-05-08T09:49:17.434Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/qrsvp-e3d86/adminSdkConfig {"projectId":"qrsvp-e3d86","storageBucket":"qrsvp-e3d86.appspot.com","locationId":"us-central"}
+[debug] [2022-05-08T09:49:19.190Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-05-08T09:49:19.190Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-05-08T09:49:19.192Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2022-05-08T09:49:19.194Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-05-08T09:49:19.194Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-05-08T09:49:19.194Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2022-05-08T09:49:21.513Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-05-08T09:49:21.513Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2022-05-08T09:49:21.513Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\samee\\.cache\\firebase\\emulators\\ui-v1.6.6\\server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\samee\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.6.6\\\\server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2022-05-08T09:49:21.620Z] Web / API server started at localhost:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at localhost:4000\n"}}
+[info] i  functions: Watching "C:\Users\samee\Documents\GitHub\ruhacks2022\firebase\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\" for Cloud Functions..."}}
+[debug] [2022-05-08T09:49:22.042Z] Validating nodejs source
+[debug] [2022-05-08T09:49:24.477Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "test": "echo \"No test specified\" && exit 0",
+    "start": "npm run serve",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "serve": "npm run build:watch | firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@openscreen/sdk": "^0.7.1",
+    "@types/cors": "^2.8.12",
+    "@types/sizzle": "^2.3.3",
+    "@types/yauzl": "^2.9.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "firebase-admin": "^9.2.0",
+    "firebase-functions": "^3.16.0",
+    "node-forge": "^1.3.0",
+    "stripe": "^8.191.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.9.1",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.0",
+    "firebase-functions-test": "^0.3.3",
+    "typescript": "^3.8.0"
+  }
+}
+[debug] [2022-05-08T09:49:24.477Z] Building nodejs source
+[debug] [2022-05-08T09:49:24.478Z] Analyzing nodejs backend spec
+[debug] [2022-05-08T09:49:24.484Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-05-08T09:49:24.484Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-05-08T09:49:24.484Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions[us-central1-createAssetAuto]: function ignored because the firestore emulator does not exist or is not running. {"metadata":{"emulator":{"name":"functions"},"message":"function ignored because the firestore emulator does not exist or is not running."}}
+[info] +  functions[us-central1-getAssetByScan]: http function initialized (http://localhost:5001/qrsvp-e3d86/us-central1/getAssetByScan). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/qrsvp-e3d86/us-central1/getAssetByScan)."}}
+[info] +  functions[us-central1-createContactByScan]: http function initialized (http://localhost:5001/qrsvp-e3d86/us-central1/createContactByScan). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/qrsvp-e3d86/us-central1/createContactByScan)."}}
+[info] +  functions[us-central1-test]: http function initialized (http://localhost:5001/qrsvp-e3d86/us-central1/test). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/qrsvp-e3d86/us-central1/test)."}}
+[info] i  functions[us-central1-updateAssetAuto]: function ignored because the firestore emulator does not exist or is not running. {"metadata":{"emulator":{"name":"functions"},"message":"function ignored because the firestore emulator does not exist or is not running."}}
+[info] i  functions[us-central1-deleteAssetAuto]: function ignored because the firestore emulator does not exist or is not running. {"metadata":{"emulator":{"name":"functions"},"message":"function ignored because the firestore emulator does not exist or is not running."}}
+[debug] [2022-05-08T09:49:24.672Z] addAuthTrigger {"eventTrigger":{"eventType":"providers/firebase.auth/eventTypes/user.create","resource":"projects/qrsvp-e3d86"}}
+[info] +  functions[us-central1-createUser]: auth function initialized. {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mauth\u001b[22m function initialized."}}
+[info] +  functions[us-central1-createEvent]: http function initialized (http://localhost:5001/qrsvp-e3d86/us-central1/createEvent). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/qrsvp-e3d86/us-central1/createEvent)."}}
+[info] +  functions[us-central1-deleteAsset]: http function initialized (http://localhost:5001/qrsvp-e3d86/us-central1/deleteAsset). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/qrsvp-e3d86/us-central1/deleteAsset)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://localhost:4000                │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ localhost:5001 │ http://localhost:4000/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2022-05-08T09:49:29.498Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-05-08T09:49:29.498Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-05-08T09:49:29.498Z] Accepted request OPTIONS /qrsvp-e3d86/us-central1/createContactByScan --> us-central1-createContactByScan
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2022-05-08T09:49:29.510Z] [worker-pool] addWorker(us-central1-createContactByScan) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-createContactByScan)"}}
+[debug] [2022-05-08T09:49:29.510Z] [worker-pool] Adding worker with key us-central1-createContactByScan, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-createContactByScan, total=1"}}
+[debug] [2022-05-08T09:49:29.510Z] [worker-pool] submitWork(triggerId=us-central1-createContactByScan) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=us-central1-createContactByScan)"}}
+[debug] [2022-05-08T09:49:29.510Z] [worker-us-central1-createContactByScan-f00133da-9867-4ba8-93c8-78d8b32e8288]: Assigning socketPath: \\?\pipe\C:\Users\samee\Documents\GitHub\ruhacks2022\firebase\functions\10760 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createContactByScan-f00133da-9867-4ba8-93c8-78d8b32e8288]: Assigning socketPath: \\\\?\\pipe\\C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\10760"}}
+[debug] [2022-05-08T09:49:29.511Z] [worker-us-central1-createContactByScan-f00133da-9867-4ba8-93c8-78d8b32e8288]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createContactByScan-f00133da-9867-4ba8-93c8-78d8b32e8288]: BUSY"}}
+[debug] [2022-05-08T09:49:30.701Z] [runtime-status] [10760] Functions runtime initialized. {"cwd":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions","node_version":"14.0.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\",\"node_version\":\"14.0.0\"}"}}
+[debug] [2022-05-08T09:49:30.702Z] [runtime-status] [10760] Disabled runtime features: undefined {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Disabled runtime features: undefined"}}
+[debug] [2022-05-08T09:49:30.704Z] [runtime-status] [10760] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.12.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-05-08T09:49:30.705Z] [runtime-status] [10760] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.21.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.21.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-05-08T09:49:30.706Z] [runtime-status] [10760] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2022-05-08T09:49:30.706Z] [runtime-status] [10760] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.21.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.21.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-05-08T09:49:30.745Z] [runtime-status] [10760] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Checked functions.config() {\"config\":{}}"}}
+[debug] [2022-05-08T09:49:30.746Z] [runtime-status] [10760] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.21.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-functions\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.21.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-05-08T09:49:30.746Z] [runtime-status] [10760] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.21.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.21.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-05-08T09:49:30.747Z] [runtime-status] [10760] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.12.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-05-08T09:49:30.748Z] [runtime-status] [10760] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.21.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.21.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-05-08T09:49:30.748Z] [runtime-status] [10760] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"9.12.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-05-08T09:49:30.793Z] [runtime-status] [10760] initializeApp(DEFAULT) {"storageBucket":"qrsvp-e3d86.appspot.com","projectId":"qrsvp-e3d86"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] initializeApp(DEFAULT) {\"storageBucket\":\"qrsvp-e3d86.appspot.com\",\"projectId\":\"qrsvp-e3d86\"}"}}
+[debug] [2022-05-08T09:49:30.794Z] [runtime-status] [10760] Beginning invocation function createContactByScan! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Beginning invocation function createContactByScan!"}}
+[info] i  functions: Beginning execution of "createContactByScan" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"Beginning execution of \"createContactByScan\""}}
+[debug] [2022-05-08T09:49:30.795Z] [runtime-status] [10760] Running createContactByScan in signature http {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Running createContactByScan in signature http"}}
+[debug] [2022-05-08T09:49:30.798Z] [runtime-status] [10760] Attempting to listen to socketPath: \\?\pipe\C:\Users\samee\Documents\GitHub\ruhacks2022\firebase\functions\10760 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Attempting to listen to socketPath: \\\\?\\pipe\\C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\10760"}}
+[debug] [2022-05-08T09:49:30.799Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-05-08T09:49:30.800Z] [functions] Got req.url=/qrsvp-e3d86/us-central1/createContactByScan, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/qrsvp-e3d86/us-central1/createContactByScan, mapping to path=/"}}
+[debug] [2022-05-08T09:49:30.803Z] [runtime-status] [10760] Ephemeral server handling OPTIONS request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Ephemeral server handling OPTIONS request"}}
+[debug] [2022-05-08T09:49:30.808Z] [runtime-status] [10760] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [10760] Ephemeral server survived."}}
+[debug] [2022-05-08T09:49:30.809Z] [work-queue] {"queueLength":1,"workRunningCount":1}
+[debug] [2022-05-08T09:49:30.809Z] [work-queue] {"queueLength":0,"workRunningCount":2}
+[debug] [2022-05-08T09:49:30.809Z] Accepted request POST /qrsvp-e3d86/us-central1/createContactByScan --> us-central1-createContactByScan
+[debug] [2022-05-08T09:49:30.810Z] ID Token: eyJhbGciOiJSUzI1NiIsImtpZCI6ImJlYmYxMDBlYWRkYTMzMmVjOGZlYTU3ZjliNWJjM2E2YWIyOWY1NTUiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU2FtZWUgQ2hvd2RodXJ5IiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdoekswcW9ucUZIUTVoWU4wbS1xUkZaZTdtZWx3MW0xSVBHMEdVdj1zOTYtYyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9xcnN2cC1lM2Q4NiIsImF1ZCI6InFyc3ZwLWUzZDg2IiwiYXV0aF90aW1lIjoxNjUxOTkxODgyLCJ1c2VyX2lkIjoiWUVPdVA1aVlRbFVFM001bDZnTmhXNnRuQTBqMiIsInN1YiI6IllFT3VQNWlZUWxVRTNNNWw2Z05oVzZ0bkEwajIiLCJpYXQiOjE2NTIwMDE4OTcsImV4cCI6MTY1MjAwNTQ5NywiZW1haWwiOiJzMmNob3dkaHVyeUByeWVyc29uLmNhIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ29vZ2xlLmNvbSI6WyIxMDQ2MjU3NTIyMDUwNjM5Nzg3MTMiXSwiZW1haWwiOlsiczJjaG93ZGh1cnlAcnllcnNvbi5jYSJdfSwic2lnbl9pbl9wcm92aWRlciI6Imdvb2dsZS5jb20ifX0.Z8rxBzeQh40MVXDXQ40zrT_AXCmr2WD-FmzHGxbD5FxtPDirShYlRkobZ9G9rVmPze1fA0KPXowIgr5wH7GqhG-0nQZB6s9sJ-Y3_GaWDp27ieAQzhwij8egYBISoRGa-hN5dU1QtG_f0TDu1nzx-XpYKFMY4_bt7ZV5s6B7wrC-phmB7ZysZLw6WCNN0Gre1BYBiT42KW4KmGptjN24snmz-k0pBHHDZoLKV8X47fG_Y1lBFuoQcCgdFn0xtmHKGRzRXcHU4OmO4GTlz5elR1UayhE5RXEp7jFoOyZeVVAoDdlwL9eWbJHUqrTsh6pITPsFv8Mzzz8ISV1nJjVDwg
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2022-05-08T09:49:30.820Z] [worker-pool] addWorker(us-central1-createContactByScan) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-createContactByScan)"}}
+[debug] [2022-05-08T09:49:30.820Z] [worker-pool] Adding worker with key us-central1-createContactByScan, total=2 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-createContactByScan, total=2"}}
+[debug] [2022-05-08T09:49:30.820Z] [worker-pool] submitWork(triggerId=us-central1-createContactByScan) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=us-central1-createContactByScan)"}}
+[debug] [2022-05-08T09:49:30.821Z] [worker-us-central1-createContactByScan-f2b14acd-0ec3-4f12-9ece-ea347124ed89]: Assigning socketPath: \\?\pipe\C:\Users\samee\Documents\GitHub\ruhacks2022\firebase\functions\7752 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createContactByScan-f2b14acd-0ec3-4f12-9ece-ea347124ed89]: Assigning socketPath: \\\\?\\pipe\\C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\7752"}}
+[debug] [2022-05-08T09:49:30.821Z] [worker-us-central1-createContactByScan-f2b14acd-0ec3-4f12-9ece-ea347124ed89]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createContactByScan-f2b14acd-0ec3-4f12-9ece-ea347124ed89]: BUSY"}}
+[info] i  functions: Finished "createContactByScan" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"Finished \"createContactByScan\" in ~1s"}}
+[debug] [2022-05-08T09:49:30.822Z] [worker-us-central1-createContactByScan-f00133da-9867-4ba8-93c8-78d8b32e8288]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createContactByScan-f00133da-9867-4ba8-93c8-78d8b32e8288]: IDLE"}}
+[debug] [2022-05-08T09:49:30.822Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-05-08T09:49:31.990Z] [runtime-status] [7752] Functions runtime initialized. {"cwd":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions","node_version":"14.0.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\",\"node_version\":\"14.0.0\"}"}}
+[debug] [2022-05-08T09:49:31.991Z] [runtime-status] [7752] Disabled runtime features: undefined {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Disabled runtime features: undefined"}}
+[debug] [2022-05-08T09:49:31.994Z] [runtime-status] [7752] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.12.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-05-08T09:49:31.995Z] [runtime-status] [7752] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.21.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.21.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-05-08T09:49:31.996Z] [runtime-status] [7752] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2022-05-08T09:49:31.996Z] [runtime-status] [7752] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.21.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.21.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-05-08T09:49:32.035Z] [runtime-status] [7752] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Checked functions.config() {\"config\":{}}"}}
+[debug] [2022-05-08T09:49:32.036Z] [runtime-status] [7752] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.21.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-functions\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.21.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-05-08T09:49:32.036Z] [runtime-status] [7752] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.21.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.21.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-05-08T09:49:32.037Z] [runtime-status] [7752] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.12.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-05-08T09:49:32.037Z] [runtime-status] [7752] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.21.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.21.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-05-08T09:49:32.038Z] [runtime-status] [7752] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"9.12.0","resolution":"C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"C:\\\\Users\\\\samee\\\\Documents\\\\GitHub\\\\ruhacks2022\\\\firebase\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-05-08T09:49:32.083Z] [runtime-status] [7752] initializeApp(DEFAULT) {"storageBucket":"qrsvp-e3d86.appspot.com","projectId":"qrsvp-e3d86"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] initializeApp(DEFAULT) {\"storageBucket\":\"qrsvp-e3d86.appspot.com\",\"projectId\":\"qrsvp-e3d86\"}"}}
+[debug] [2022-05-08T09:49:32.084Z] [runtime-status] [7752] Beginning invocation function createContactByScan! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Beginning invocation function createContactByScan!"}}
+[info] i  functions: Beginning execution of "createContactByScan" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"Beginning execution of \"createContactByScan\""}}
+[debug] [2022-05-08T09:49:32.084Z] [runtime-status] [7752] Running createContactByScan in signature http {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Running createContactByScan in signature http"}}
+[debug] [2022-05-08T09:49:32.087Z] [runtime-status] [7752] Attempting to listen to socketPath: \\?\pipe\C:\Users\samee\Documents\GitHub\ruhacks2022\firebase\functions\7752 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Attempting to listen to socketPath: \\\\?\\pipe\\C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\7752"}}
+[debug] [2022-05-08T09:49:32.089Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-05-08T09:49:32.089Z] [functions] Got req.url=/qrsvp-e3d86/us-central1/createContactByScan, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/qrsvp-e3d86/us-central1/createContactByScan, mapping to path=/"}}
+[debug] [2022-05-08T09:49:32.101Z] [runtime-status] [7752] Ephemeral server handling POST request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Ephemeral server handling POST request"}}
+[info] >  {"verifications":{"app":"MISSING","auth":"MISSING"},"logging.googleapis.com/labels":{"firebase-log-type":"callable-request-verification"},"severity":"INFO","message":"Callable request verification passed"} {"user":{"verifications":{"app":"MISSING","auth":"MISSING"},"logging.googleapis.com/labels":{"firebase-log-type":"callable-request-verification"},"severity":"INFO","message":"Callable request verification passed"},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"verifications\":{\"app\":\"MISSING\",\"auth\":\"MISSING\"},\"logging.googleapis.com/labels\":{\"firebase-log-type\":\"callable-request-verification\"},\"severity\":\"INFO\",\"message\":\"Callable request verification passed\"}"}}
+[debug] [2022-05-08T09:49:32.104Z] [runtime-status] [7752] Callable functions auth override {"key":"x-callable-context-auth","value":"%7B%22uid%22%3A%22YEOuP5iYQlUE3M5l6gNhW6tnA0j2%22%2C%22token%22%3A%7B%22name%22%3A%22Samee%20Chowdhury%22%2C%22picture%22%3A%22https%3A%2F%2Flh3.googleusercontent.com%2Fa-%2FAOh14GhzK0qonqFHQ5hYN0m-qRFZe7melw1m1IPG0GUv%3Ds96-c%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fqrsvp-e3d86%22%2C%22aud%22%3A%22qrsvp-e3d86%22%2C%22auth_time%22%3A1651991882%2C%22user_id%22%3A%22YEOuP5iYQlUE3M5l6gNhW6tnA0j2%22%2C%22sub%22%3A%22YEOuP5iYQlUE3M5l6gNhW6tnA0j2%22%2C%22iat%22%3A1652001897%2C%22exp%22%3A1652005497%2C%22email%22%3A%22s2chowdhury%40ryerson.ca%22%2C%22email_verified%22%3Atrue%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22google.com%22%3A%5B%22104625752205063978713%22%5D%2C%22email%22%3A%5B%22s2chowdhury%40ryerson.ca%22%5D%7D%2C%22sign_in_provider%22%3A%22google.com%22%7D%2C%22uid%22%3A%22YEOuP5iYQlUE3M5l6gNhW6tnA0j2%22%7D%7D"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Callable functions auth override {\"key\":\"x-callable-context-auth\",\"value\":\"%7B%22uid%22%3A%22YEOuP5iYQlUE3M5l6gNhW6tnA0j2%22%2C%22token%22%3A%7B%22name%22%3A%22Samee%20Chowdhury%22%2C%22picture%22%3A%22https%3A%2F%2Flh3.googleusercontent.com%2Fa-%2FAOh14GhzK0qonqFHQ5hYN0m-qRFZe7melw1m1IPG0GUv%3Ds96-c%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fqrsvp-e3d86%22%2C%22aud%22%3A%22qrsvp-e3d86%22%2C%22auth_time%22%3A1651991882%2C%22user_id%22%3A%22YEOuP5iYQlUE3M5l6gNhW6tnA0j2%22%2C%22sub%22%3A%22YEOuP5iYQlUE3M5l6gNhW6tnA0j2%22%2C%22iat%22%3A1652001897%2C%22exp%22%3A1652005497%2C%22email%22%3A%22s2chowdhury%40ryerson.ca%22%2C%22email_verified%22%3Atrue%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22google.com%22%3A%5B%22104625752205063978713%22%5D%2C%22email%22%3A%5B%22s2chowdhury%40ryerson.ca%22%5D%7D%2C%22sign_in_provider%22%3A%22google.com%22%7D%2C%22uid%22%3A%22YEOuP5iYQlUE3M5l6gNhW6tnA0j2%22%7D%7D\"}"}}
+[info] >  1652001914686-ku16i_Di3Lh droopy 4162094523 {"user":"1652001914686-ku16i_Di3Lh droopy 4162094523","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"\u001b[90m> \u001b[39m 1652001914686-ku16i_Di3Lh droopy 4162094523"}}
+[warn] !  External network resource requested!
+   - URL: "https://cognito-idp.us-east-1.amazonaws.com/"
+ - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"External network resource requested!\n   - URL: \"https://cognito-idp.us-east-1.amazonaws.com/\"\n - Be careful, this may be a production service."}}
+[info] >  {"entityType":"entity.response","deleted":"2022-05-09T09:49:34.403Z","responseId":"1652003374403-djs7u","name":"DUPLICATE_ALREADY_EXISTS","message":"Unhandled error","code":409,"data":{"queryStringParameters":null,"pathParameters":{"entityType":"create_contact_by_scan_id.path_parameters","scanId":"1652001914686-ku16i_Di3Lh"},"body":{"entityType":"create_contact_by_scan_id.request_body","firstName":"droopy","middleName":"","lastName":"","nickname":"","cellPhone":"+14162094523"}},"source":"createContactByScanId (/src/api/scans/createContactByScanId/handler.js:100:22)","stack":["createContactByScanId (/src/api/scans/createContactByScanId/handler.js:100:22)"],"severity":"ERROR"} {"user":{"entityType":"entity.response","deleted":"2022-05-09T09:49:34.403Z","responseId":"1652003374403-djs7u","name":"DUPLICATE_ALREADY_EXISTS","message":"Unhandled error","code":409,"data":{"queryStringParameters":null,"pathParameters":{"entityType":"create_contact_by_scan_id.path_parameters","scanId":"1652001914686-ku16i_Di3Lh"},"body":{"entityType":"create_contact_by_scan_id.request_body","firstName":"droopy","middleName":"","lastName":"","nickname":"","cellPhone":"+14162094523"}},"source":"createContactByScanId (/src/api/scans/createContactByScanId/handler.js:100:22)","stack":["createContactByScanId (/src/api/scans/createContactByScanId/handler.js:100:22)"],"severity":"ERROR"},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"entityType\":\"entity.response\",\"deleted\":\"2022-05-09T09:49:34.403Z\",\"responseId\":\"1652003374403-djs7u\",\"name\":\"DUPLICATE_ALREADY_EXISTS\",\"message\":\"Unhandled error\",\"code\":409,\"data\":{\"queryStringParameters\":null,\"pathParameters\":{\"entityType\":\"create_contact_by_scan_id.path_parameters\",\"scanId\":\"1652001914686-ku16i_Di3Lh\"},\"body\":{\"entityType\":\"create_contact_by_scan_id.request_body\",\"firstName\":\"droopy\",\"middleName\":\"\",\"lastName\":\"\",\"nickname\":\"\",\"cellPhone\":\"+14162094523\"}},\"source\":\"createContactByScanId (/src/api/scans/createContactByScanId/handler.js:100:22)\",\"stack\":[\"createContactByScanId (/src/api/scans/createContactByScanId/handler.js:100:22)\"],\"severity\":\"ERROR\"}"}}
+[debug] [2022-05-08T09:49:33.426Z] [runtime-status] [7752] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"[runtime-status] [7752] Ephemeral server survived."}}
+[info] i  functions: Finished "createContactByScan" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createContactByScan"},"extension":{},"message":"Finished \"createContactByScan\" in ~1s"}}
+[debug] [2022-05-08T09:49:33.427Z] [worker-us-central1-createContactByScan-f2b14acd-0ec3-4f12-9ece-ea347124ed89]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createContactByScan-f2b14acd-0ec3-4f12-9ece-ea347124ed89]: IDLE"}}
+[debug] [2022-05-08T09:49:33.428Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2022-05-08T09:49:39.653Z] File C:\Users\samee\Documents\GitHub\ruhacks2022\firebase\functions\src\index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\src\\index.ts changed, reloading triggers"}}
+[debug] [2022-05-08T09:49:40.199Z] File C:\Users\samee\Documents\GitHub\ruhacks2022\firebase\functions\lib\index.js.map changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\lib\\index.js.map changed, reloading triggers"}}
+[debug] [2022-05-08T09:49:40.202Z] File C:\Users\samee\Documents\GitHub\ruhacks2022\firebase\functions\lib\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\lib\\index.js changed, reloading triggers"}}
+[debug] [2022-05-08T09:49:41.210Z] [worker-pool] Shutting down IDLE worker (us-central1-createContactByScan) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-createContactByScan)"}}
+[debug] [2022-05-08T09:49:41.210Z] [worker-us-central1-createContactByScan-f00133da-9867-4ba8-93c8-78d8b32e8288]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createContactByScan-f00133da-9867-4ba8-93c8-78d8b32e8288]: FINISHING"}}
+[debug] [2022-05-08T09:49:41.211Z] [worker-pool] Shutting down IDLE worker (us-central1-createContactByScan) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-createContactByScan)"}}
+[debug] [2022-05-08T09:49:41.211Z] [worker-us-central1-createContactByScan-f2b14acd-0ec3-4f12-9ece-ea347124ed89]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createContactByScan-f2b14acd-0ec3-4f12-9ece-ea347124ed89]: FINISHING"}}
+[debug] [2022-05-08T09:49:41.212Z] Validating nodejs source
+[debug] [2022-05-08T09:49:43.704Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "test": "echo \"No test specified\" && exit 0",
+    "start": "npm run serve",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "serve": "npm run build:watch | firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@openscreen/sdk": "^0.7.1",
+    "@types/cors": "^2.8.12",
+    "@types/sizzle": "^2.3.3",
+    "@types/yauzl": "^2.9.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "firebase-admin": "^9.2.0",
+    "firebase-functions": "^3.16.0",
+    "node-forge": "^1.3.0",
+    "stripe": "^8.191.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.9.1",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.0",
+    "firebase-functions-test": "^0.3.3",
+    "typescript": "^3.8.0"
+  }
+}
+[debug] [2022-05-08T09:49:43.704Z] Building nodejs source
+[debug] [2022-05-08T09:49:43.704Z] Analyzing nodejs backend spec
+[debug] [2022-05-08T09:49:43.709Z] [worker-us-central1-createContactByScan-f00133da-9867-4ba8-93c8-78d8b32e8288]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createContactByScan-f00133da-9867-4ba8-93c8-78d8b32e8288]: exited"}}
+[debug] [2022-05-08T09:49:43.709Z] [worker-us-central1-createContactByScan-f00133da-9867-4ba8-93c8-78d8b32e8288]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createContactByScan-f00133da-9867-4ba8-93c8-78d8b32e8288]: FINISHED"}}
+[debug] [2022-05-08T09:49:43.710Z] [worker-us-central1-createContactByScan-f2b14acd-0ec3-4f12-9ece-ea347124ed89]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createContactByScan-f2b14acd-0ec3-4f12-9ece-ea347124ed89]: exited"}}
+[debug] [2022-05-08T09:49:43.710Z] [worker-us-central1-createContactByScan-f2b14acd-0ec3-4f12-9ece-ea347124ed89]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createContactByScan-f2b14acd-0ec3-4f12-9ece-ea347124ed89]: FINISHED"}}
+[debug] [2022-05-08T09:49:50.071Z] File C:\Users\samee\Documents\GitHub\ruhacks2022\firebase\functions\src\index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\src\\index.ts changed, reloading triggers"}}
+[debug] [2022-05-08T09:49:50.616Z] File C:\Users\samee\Documents\GitHub\ruhacks2022\firebase\functions\lib\index.js.map changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\lib\\index.js.map changed, reloading triggers"}}
+[debug] [2022-05-08T09:49:50.619Z] File C:\Users\samee\Documents\GitHub\ruhacks2022\firebase\functions\lib\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\samee\\Documents\\GitHub\\ruhacks2022\\firebase\\functions\\lib\\index.js changed, reloading triggers"}}
+[debug] [2022-05-08T09:49:51.621Z] Validating nodejs source
+[debug] [2022-05-08T09:49:54.093Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "test": "echo \"No test specified\" && exit 0",
+    "start": "npm run serve",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "serve": "npm run build:watch | firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@openscreen/sdk": "^0.7.1",
+    "@types/cors": "^2.8.12",
+    "@types/sizzle": "^2.3.3",
+    "@types/yauzl": "^2.9.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "firebase-admin": "^9.2.0",
+    "firebase-functions": "^3.16.0",
+    "node-forge": "^1.3.0",
+    "stripe": "^8.191.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.9.1",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.0",
+    "firebase-functions-test": "^0.3.3",
+    "typescript": "^3.8.0"
+  }
+}
+[debug] [2022-05-08T09:49:54.093Z] Building nodejs source
+[debug] [2022-05-08T09:49:54.093Z] Analyzing nodejs backend spec

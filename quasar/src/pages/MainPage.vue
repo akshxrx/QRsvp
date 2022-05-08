@@ -106,10 +106,12 @@ $height: 600px;
 </style>
 
 <script lang="ts">
-import { defineComponent, ref } from '@vue/runtime-core';
+import { useFirebaseUser } from '@gcto/firebase-hooks/lib';
+import { defineComponent, ref, watchEffect } from '@vue/runtime-core';
 import LoginGoogleBtn from 'src/components/auth/LoginGoogleBtn.vue';
 
 import EventModule from 'src/components/EventModule.vue';
+import { useRouter } from 'vue-router';
 
 // function addLeadingZeros(num: number, totalLength: number) {
 //   return String(num).padStart(totalLength, '0');
@@ -118,6 +120,9 @@ import EventModule from 'src/components/EventModule.vue';
 export default defineComponent({
   components: { EventModule, LoginGoogleBtn },
   setup() {
+    const user = useFirebaseUser();
+    const router = useRouter();
+
     const num = ref(60);
 
     const stats = {

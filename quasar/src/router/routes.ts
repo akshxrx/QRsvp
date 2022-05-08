@@ -30,6 +30,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/portal/SettingsPage.vue'),
       },
       { path: 'wifi', component: () => import('pages/portal/WifiPage.vue') },
+      { path: 'start', component: () => import('pages/MainPage.vue') },
       { path: '', component: () => import('pages/MainPage.vue') },
     ],
   },

@@ -6,8 +6,8 @@
             <h3>
                 The perfect solution to get RSVP done all with a scan.
             </h3>
-            <q-btn outline rounded style="margin-left: 1em; color: primary;" text-color="primary" size="xl" label="Create" />
-            <q-btn outline rounded style="margin-left: 2em; color: primary;" text-color="primary" size="xl" label="Register" />
+            <q-btn outline rounded style="margin-left: 0em; color: primary;" text-color="primary" size="xl" label="Create" />
+            <q-btn outline rounded style="margin-left: 1em; color: primary;" text-color="primary" size="xl" label="Register" />
         </div>
         <div class="col gt-sm" id="image">
             <img src="https://cdn.discordapp.com/attachments/908036079528058930/972659581056614480/Component_3.png" width="555"/>
@@ -28,8 +28,9 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
 
-    h2, h3{
+    h1, h2, h3{
         font-family: 'Atkinson Hyperlegible', sans-serif;
+        /* font-size:340%; */
     }
 
     strong{

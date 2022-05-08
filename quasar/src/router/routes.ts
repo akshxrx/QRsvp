@@ -13,7 +13,14 @@ const routes: RouteRecordRaw[] = [
     path: '/portal',
     component: () => import('layouts/PortalLayout.vue'),
     children: [
-      { path: '/', component: () => import('pages/portal/DashboardPage.vue') },
+      {
+        path: 'event/:eventId',
+        component: () => import('pages/EventPage.vue'),
+      },
+      {
+        path: 'dashboard',
+        component: () => import('pages/portal/DashboardPage.vue'),
+      },
       {
         path: 'events',
         component: () => import('pages/portal/EventsPage.vue'),

@@ -1,99 +1,46 @@
 <template>
   <div>
     <template v-if="!userAuth">
-      <q-btn
-        flat
-        dark
-        class="fn-sm text-center q-py-sm q-px-md bg-white text-black"
-        no-caps
-        dense
-      >
-        Register / Sign in
-        <q-menu
-          fit
-          anchor="bottom right"
-          self="top right"
-          class="text-dark bg-transparent column"
-        >
-          <login-google-btn
-            class="fn-xs"
-            align="left"
-            v-bind="$attrs"
-            provider="fb"
-          />
-          <login-google-btn class="fn-xs" align="left" v-bind="$attrs" />
-          <login-google-btn
-            class="fn-xs"
-            align="left"
-            v-bind="$attrs"
-            provider="email"
-          />
-        </q-menu>
-      </q-btn>
+      <div class="column items-center q-py-md">
+        <q-icon name="person" color="primary" class="op-60" size="40px" />
+        <!-- <div class="fn-sm text-center fn-400 op-80">Sign in</div> -->
+      </div>
     </template>
     <template v-else>
-      <q-btn flat round>
-        <q-avatar size="50px" color="grey">
-          <q-img :src="userAuth.photoURL" />
-        </q-avatar>
-      </q-btn>
-      <q-menu anchor="bottom right" self="top right" class="text-dark fn-400">
-        <q-list style="min-width: 100px">
-          <q-item v-close-popup clickable @click="changeRoute(`/admin`)">
-            <q-item-section>Admin</q-item-section>
-          </q-item>
-          <q-item
-            v-close-popup
-            clickable
-            @click="changeRoute(`/organizer-admin`)"
-          >
-            <q-item-section>Manage organizations</q-item-section>
-          </q-item>
-          <q-item
-            v-close-popup
-            clickable
-            @click="
-              changeRoute(
-                `/user/${
-                  userObject.data
-                    ? userObject.id
-                    : 'B7OjVqtoMLZB4MRUgprx3NJ1X323'
-                }`
-              )
-            "
-          >
-            <q-item-section>My profile</q-item-section>
-          </q-item>
-
-          <q-item v-close-popup clickable @click="logoutUser">
-            <q-item-section>Log out</q-item-section>
-          </q-item>
-        </q-list>
-      </q-menu>
+      <div class="row justify-center q-py-md">
+        <q-btn flat round>
+          <q-avatar size="60px" color="grey">
+            <q-img :src="userAuth.photoURL" />
+          </q-avatar>
+        </q-btn>
+      </div>
     </template>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { useFirebaseUser, useFirestoreDoc } from '@gcto/firebase-hooks/lib';
+import { computed, defineComponent } from 'vue';
 
-import { useFirebaseUser, logoutUser } from 'src/shared/firebase-auth';
 import { useRouter } from 'vue-router';
 import LoginGoogleBtn from './LoginGoogleBtn.vue';
-import { usersCollection } from 'src/collections/userCollection';
+import firebase from 'firebase';
 
 export default defineComponent({
-  name: 'Login',
-  components: { LoginGoogleBtn },
   setup() {
     const $router = useRouter();
-    const userAuth = useFirebaseUser();
-    const userObject = usersCollection.watch(() => userAuth.value?.uid);
+    const _userAuth = useFirebaseUser();
+    const userAuth = computed(() => _userAuth.data.value);
+    const userObject = useFirestoreDoc('users', () => userAuth.value?.uid); //usersCollection.watch(() => userAuth.value?.uid);
 
     function changeRoute(route: string) {
       void (async () => {
         await $router.push(route);
       })();
+    }
+
+    function logoutUser() {
+      void firebase.auth().signOut();
     }
 
     return {

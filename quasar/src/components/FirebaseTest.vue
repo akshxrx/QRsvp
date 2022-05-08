@@ -12,25 +12,19 @@
 
 <script lang="ts">
 import {
-  httpsCallable,
   useFirestoreCollection,
-  useFirestoreDoc,
   useHttpsCallable,
 } from '@gcto/firebase-hooks/lib';
-import {
-  CreateAssetByProjectIdRequestBody,
-  GetAssetGroupResponseBody,
-  GetAssetResponseBody,
-  ResponseAsset,
-} from '@openscreen/sdk';
-import { computed } from '@vue/composition-api';
+import { ResponseAsset } from '@openscreen/sdk';
+// import { computed } from '@vue/composition-api';
 import { defineComponent } from '@vue/runtime-core';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 
 export default defineComponent({
   setup() {
     const { data } = useFirestoreCollection('test');
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const allAssets = useHttpsCallable<any, ResponseAsset[]>(
       'getAssets',
       () => ({})
@@ -52,11 +46,12 @@ export default defineComponent({
     //   () => '7c399fdf-35ed-4cac-b3c9-ee8519ba2799'
     // );
     const createProject = async () => {
-      const fs = firebase.firestore();
-      fs.collection('assets').add({
-        name: 'test event',
-        qrCodes: ['http://localhost:8080/#/'],
-      });
+      useHttpsCallable('test', () => ({}));
+      // const fs = firebase.firestore();
+      // fs.collection('assets').add({
+      //   name: 'test event',
+      //   qrCodes: ['http://localhost:8080/#/'],
+      // });
       // useHttpsCallable('createEvent', () => ({
       //   name: 'Hello',
       // }));

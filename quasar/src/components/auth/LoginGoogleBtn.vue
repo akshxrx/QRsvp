@@ -1,12 +1,17 @@
 <template>
   <q-btn
-    :label="label || 'Sign in with ' + providerInfo[provider || 'google'].name"
+    class="fn-sm q-py-md"
     :color="providerInfo[provider || 'google'].color"
     :text-color="providerInfo[provider || 'google'].text"
     v-bind="$attrs"
-    :icon="providerInfo[provider || 'google'].icon"
     @click="signIn"
-  />
+  >
+    <q-icon :name="providerInfo[provider || 'google'].icon" />
+
+    <div class="fn-xxs">
+      {{ label || 'use ' + providerInfo[provider || 'google'].name }}
+    </div>
+  </q-btn>
   <!-- DIALOG FOR EMAIL LINK -->
   <q-dialog v-model="emailPrompt" persistent>
     <q-card style="min-width: 350px">
@@ -36,8 +41,14 @@ import { defineComponent, ref } from 'vue';
 import { useQuasar } from 'quasar';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { currentPathUrl } from 'src/utils/route-paths';
-import { isValidEmail } from 'src/shared/utils';
+export const currentPathUrl = process.env.DEV
+  ? 'http://localhost:8080'
+  : 'TODO MAIN';
+export const isValidEmail = (val: string) => {
+  const emailPattern =
+    /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
+  return emailPattern.test(val);
+};
 
 export default defineComponent({
   name: 'AuthGmailConnect',

@@ -1,8 +1,8 @@
 {
   "name": "quasar",
   "version": "0.0.1",
-  "description": "A Quasar Project",
-  "productName": "Quasar App",
+  "description": "QRSVP",
+  "productName": "QRSVP",
   "author": "Aloinn <46081985+Aloinn@users.noreply.github.com>",
   "private": true,
   "scripts": {

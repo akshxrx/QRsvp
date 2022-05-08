@@ -23,7 +23,6 @@ import { useFirebaseUser, useFirestoreDoc } from '@gcto/firebase-hooks/lib';
 import { computed, defineComponent } from 'vue';
 
 import { useRouter } from 'vue-router';
-import LoginGoogleBtn from './LoginGoogleBtn.vue';
 import firebase from 'firebase';
 
 export default defineComponent({

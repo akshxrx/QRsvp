@@ -137,8 +137,8 @@ module.exports = configure(function (ctx) {
       // chainWebpackCustomSW (/* chain */) {},
 
       manifest: {
-        name: 'Quasar App',
-        short_name: 'Quasar App',
+        name: 'QRSVP',
+        short_name: 'QRSVP',
         description: '',
         display: 'standalone',
         orientation: 'portrait',

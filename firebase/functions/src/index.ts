@@ -1,10 +1,12 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import {
-  CreateAssetByProjectIdRequestBody,
   NestedKeyValueObject,
   Openscreen,
+  QrCodeDynamicRedirectType,
   QrCodeIntentType,
+  QrCodeLocatorKeyType,
+  QrCodeType,
 } from "@openscreen/sdk";
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -30,18 +32,42 @@ export const createAssetAuto = functions.firestore
     const data = snap.data();
     const openscreenAsset = await openScreenProject.assets().create({
       customAttributes: data,
-      qrCodes: data.qrCodes?.map((qr: string) => ({
-        intent: clientUrl,
-        intentType: QrCodeIntentType.DYNAMIC_REDIRECT,
-      })),
+      // qrCodes: data.qrCodes?.map((qr: string) => ({
+      //   intent: clientUrl,
+      //   intentType: QrCodeIntentType.DYNAMIC_REDIRECT,
+      // })),
       name: (data.name as string) || "eventName",
     });
-
+    let qrCode;
+    let qrObject;
+    if (openscreenAsset?.asset?.assetId) {
+      qrObject = await openScreen
+        .asset(openscreenAsset?.asset?.assetId)
+        .qrCodes()
+        .create({
+          intent: clientUrl,
+          intentType: QrCodeIntentType.DYNAMIC_REDIRECT,
+          dynamicRedirectType:
+            QrCodeDynamicRedirectType.SCAN_ID_IN_PATH_PARAMETER,
+          locatorKeyType: QrCodeLocatorKeyType.SHORT_URL,
+        });
+      if (qrObject.qrCodeId) {
+        qrCode = await openScreen.qrCode(qrObject.qrCodeId).get({
+          format: QrCodeType.PNG,
+          scale: 12,
+          background: "#ffffff",
+          foreground: "#0a74b7",
+          dataUrl: true,
+        });
+      }
+    }
     snap.ref.set(
       {
-        assetId: openscreenAsset.projectId || "no-project",
+        assetId: openscreenAsset?.asset?.assetId || "no-project",
         // qrCodes: openscreenAsset.asset?.qrCodes?.map((qr) => qr || "no-qr"),
         eventId: data.eventId || "no-event",
+        qrCodeId: qrObject?.qrCodeId || "no qr id",
+        imgData: qrCode?.image?.data || "no img data",
       },
       { merge: true }
     );
@@ -102,19 +128,19 @@ export const createEvent = functions.https.onCall(
   }
 );
 
-export const getAssets = functions.https.onCall(async () => {
-  return (await openScreenProject.assets().get("")).assets;
-});
-export const getAssetsByGroup = functions.https.onCall(
-  async (data: string, context) => {
-    return (await openScreen.assetGroup(data).get()).assets;
-  }
-);
-export const getAsset = functions.https.onCall(
-  async (data: string, context) => {
-    return await openScreen.asset(data).get();
-  }
-);
+// export const getAssets = functions.https.onCall(async () => {
+//   return (await openScreenProject.assets().get("")).assets;
+// });
+// export const getAssetsByGroup = functions.https.onCall(
+//   async (data: string, context) => {
+//     return (await openScreen.assetGroup(data).get()).assets;
+//   }
+// );
+// export const getAsset = functions.https.onCall(
+//   async (data: string, context) => {
+//     return await openScreen.asset(data).get();
+//   }
+// );
 
 export const deleteAsset = functions.https.onCall(
   async (data: string, context) => {

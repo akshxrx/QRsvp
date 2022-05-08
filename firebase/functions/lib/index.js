@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteAsset = exports.getAsset = exports.getAssetsByGroup = exports.getAssets = exports.createEvent = exports.createUser = exports.deleteAssetAuto = exports.updateAssetAuto = exports.test = exports.createAssetAuto = void 0;
+exports.deleteAsset = exports.createEvent = exports.createUser = exports.deleteAssetAuto = exports.updateAssetAuto = exports.test = exports.createAssetAuto = void 0;
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const sdk_1 = require("@openscreen/sdk");
@@ -21,20 +21,44 @@ admin.initializeApp();
 exports.createAssetAuto = functions.firestore
     .document("assets/{assetId}")
     .onCreate(async (snap, context) => {
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
     const data = snap.data();
     const openscreenAsset = await openScreenProject.assets().create({
         customAttributes: data,
-        qrCodes: (_a = data.qrCodes) === null || _a === void 0 ? void 0 : _a.map((qr) => ({
-            intent: clientUrl,
-            intentType: sdk_1.QrCodeIntentType.DYNAMIC_REDIRECT,
-        })),
+        // qrCodes: data.qrCodes?.map((qr: string) => ({
+        //   intent: clientUrl,
+        //   intentType: QrCodeIntentType.DYNAMIC_REDIRECT,
+        // })),
         name: data.name || "eventName",
     });
+    let qrCode;
+    let qrObject;
+    if ((_a = openscreenAsset === null || openscreenAsset === void 0 ? void 0 : openscreenAsset.asset) === null || _a === void 0 ? void 0 : _a.assetId) {
+        qrObject = await openScreen
+            .asset((_b = openscreenAsset === null || openscreenAsset === void 0 ? void 0 : openscreenAsset.asset) === null || _b === void 0 ? void 0 : _b.assetId)
+            .qrCodes()
+            .create({
+            intent: clientUrl,
+            intentType: sdk_1.QrCodeIntentType.DYNAMIC_REDIRECT,
+            dynamicRedirectType: sdk_1.QrCodeDynamicRedirectType.SCAN_ID_IN_PATH_PARAMETER,
+            locatorKeyType: sdk_1.QrCodeLocatorKeyType.SHORT_URL,
+        });
+        if (qrObject.qrCodeId) {
+            qrCode = await openScreen.qrCode(qrObject.qrCodeId).get({
+                format: sdk_1.QrCodeType.PNG,
+                scale: 12,
+                background: "#ffffff",
+                foreground: "#0a74b7",
+                dataUrl: true,
+            });
+        }
+    }
     snap.ref.set({
-        assetId: openscreenAsset.projectId || "no-project",
-        qrCodes: (_c = (_b = openscreenAsset.asset) === null || _b === void 0 ? void 0 : _b.qrCodes) === null || _c === void 0 ? void 0 : _c.map((qr) => qr. || "no-qr"),
+        assetId: ((_c = openscreenAsset === null || openscreenAsset === void 0 ? void 0 : openscreenAsset.asset) === null || _c === void 0 ? void 0 : _c.assetId) || "no-project",
+        // qrCodes: openscreenAsset.asset?.qrCodes?.map((qr) => qr || "no-qr"),
         eventId: data.eventId || "no-event",
+        qrCodeId: (qrObject === null || qrObject === void 0 ? void 0 : qrObject.qrCodeId) || "no qr id",
+        imgData: ((_d = qrCode === null || qrCode === void 0 ? void 0 : qrCode.image) === null || _d === void 0 ? void 0 : _d.data) || "no img data",
     }, { merge: true });
 });
 exports.test = functions.https.onCall((c, t) => {
@@ -85,15 +109,19 @@ exports.createEvent = functions.https.onCall(async (data, context) => {
     });
     return;
 });
-exports.getAssets = functions.https.onCall(async () => {
-    return (await openScreenProject.assets().get("")).assets;
-});
-exports.getAssetsByGroup = functions.https.onCall(async (data, context) => {
-    return (await openScreen.assetGroup(data).get()).assets;
-});
-exports.getAsset = functions.https.onCall(async (data, context) => {
-    return await openScreen.asset(data).get();
-});
+// export const getAssets = functions.https.onCall(async () => {
+//   return (await openScreenProject.assets().get("")).assets;
+// });
+// export const getAssetsByGroup = functions.https.onCall(
+//   async (data: string, context) => {
+//     return (await openScreen.assetGroup(data).get()).assets;
+//   }
+// );
+// export const getAsset = functions.https.onCall(
+//   async (data: string, context) => {
+//     return await openScreen.asset(data).get();
+//   }
+// );
 exports.deleteAsset = functions.https.onCall(async (data, context) => {
     return await openScreen.asset(data).delete();
 });

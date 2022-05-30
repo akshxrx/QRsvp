@@ -1,4 +1,4 @@
-# QRsvp
+# :jigsaw: QRsvp
 
 ** **
 ## 🏆 Top 10 overall in RU-Hacks 2022 🏆
@@ -24,7 +24,7 @@
 
 ** **
 
-# ✨ Come explore our site ✨ 
+# ✨ Come explore ✨ 
 
 
 ### Submission: https://devpost.com/software/qrvsp
